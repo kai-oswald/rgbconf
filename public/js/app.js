@@ -15,12 +15,21 @@ $(document).ready(function() {
         changeColor();
     });
 
+     $("#btnOff").click(function() {
+        $.ajax({
+            method: "GET",
+            url: "/none",
+            success: function() {
+            }
+
+        });
+    });
+
     function changeColor() {
            $.ajax({
             method: "GET",
             url: "/color",
             success: function() {
-                console.log("success");
             }
 
         });

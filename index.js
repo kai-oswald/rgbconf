@@ -31,6 +31,16 @@ app.get("/color", function (req, res) {
     res.send("true");
 });
 
+app.get("/none", function(req, res) {
+    var none = {
+        r: 0,
+        g: 0,
+        b: 0
+    }
+    changeColor(none);
+    res.send("true");
+});
+
 function rndColor() {
     var r = Math.round(Math.random() * 255);
     var g = Math.round(Math.random() * 255);
