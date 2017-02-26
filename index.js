@@ -14,6 +14,7 @@ function changeColor(color) {
             logColorChange(color);
         } else {
             console.log("could not change color.");
+            console.log(error);
         }
     });
 }
