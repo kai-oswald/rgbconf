@@ -1,8 +1,11 @@
 var request = require('request');
 var ip = "http://192.168.2.103:4000";
-
-
+var rgb = require("./rgb");
 function changeColor(color) {
+    rgb.setColor(color.r, color.g, color.b);
+}
+
+function changeColor2(color) {
     var options = {
         uri: ip,
         method: 'POST',
@@ -22,15 +25,13 @@ function changeColor(color) {
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var rgb = require("./rgb");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
-    console.log(rgb);
-    res.render("index.html")
+    res.render("index.html");
 });
 
 app.post("/color", function (req, res) {
