@@ -62,7 +62,6 @@ function changeColor(color) {
         url: "/color",
         data: color,
         success: function () {
-            console.log("s");
         },
         error: function(e) {
             console.log(e);

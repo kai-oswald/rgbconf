@@ -33,7 +33,6 @@ app.get('/', function (req, res) {
 app.post("/color", function (req, res) {
     // if color is empty, set random color
     if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
-        console.log("random");
         changeColor(rndColor());
     } else {
         changeColor(req.body);
