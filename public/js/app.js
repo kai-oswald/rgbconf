@@ -36,12 +36,12 @@ function changeColor(color) {
         url: "/color",
         data: color,
         success: function (req) {
-            setBackground(req.r, req.g, req.b);
+            setBackground(new Color(req.r, req.g, req.b));
         },
         error: function(e) {
+	    console.log("error:");
             console.log(e);
-        },
-        dataType: "application/json"
+        }       
     });
 }
 

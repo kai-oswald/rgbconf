@@ -29,8 +29,8 @@ app.post("/color", function (req, res) {
     } else {
         changeColor(color);
     }
-    res.send(color);
-
+    res.setHeader('Content-Type', 'application/json');    
+    res.json(color);
 });
 
 function rndColor() {
