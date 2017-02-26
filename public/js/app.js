@@ -1,48 +1,22 @@
 $(document).ready(function () {
-    var ip;
     var partyMode;
-
+    
     function stopPartyMode() {
         clearInterval(partyMode);
-    }
-    
-    $("#btnIp").click(function () {
-        ip = $("#inputIp").val();
-        init();
-    });
+    } 
 
     $("#btnParty").click(function () {
         partyMode = setInterval(changeColor, 1000);
     });
 
     $("#btnRnd").click(function () {
-        changeColor();
+        changeColor({});
     });
 
     $("#btnOff").click(function () {
         stopPartyMode();
-        $.ajax({
-            method: "POST",
-            url: "/color",
-            data: new Color(0, 0, 0),
-            success: function () {}
-        });
-    });
-
-    function changeColor() {
-        $.ajax({
-            method: "POST",
-            url: "/color",
-            success: function () {}
-
-        });
-    }
-
-    function init() {
-        var red = new Color(255, 0, 0);
-        changeColor(red);
-
-    }
+        changeColor(new Color(0, 0, 0));
+    });    
 });
 
 function Color(r, g, b) {
@@ -56,16 +30,22 @@ function update(jscolor) {
     changeColor(chosenColor);
 }
 
-function changeColor(color) {
+function changeColor(color) {    
     $.ajax({
         method: "POST",
         url: "/color",
         data: color,
-        success: function () {
+        success: function (req) {
+            setBackground(req.r, req.g, req.b);
         },
         error: function(e) {
             console.log(e);
         },
         dataType: "application/json"
     });
+}
+
+function setBackground(color) {
+    var c = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
+    document.body.setAttribute("style", "background: " + c);
 }

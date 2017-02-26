@@ -22,12 +22,15 @@ app.get('/', function (req, res) {
 
 app.post("/color", function (req, res) {
     // if color is empty, set random color
-    if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
-        changeColor(rndColor());
+    var color = req.body;
+    if (Object.keys(color).length === 0 && color.constructor === Object) {
+        color = rndColor();
+        changeColor(color);
     } else {
-        changeColor(req.body);
+        changeColor(color);
     }
-    res.send("true");
+    res.send(color);
+
 });
 
 function rndColor() {
