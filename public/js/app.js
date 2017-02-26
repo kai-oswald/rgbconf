@@ -47,5 +47,5 @@ function changeColor(color) {
 
 function setBackground(color) {
     var c = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";
-    document.getElementById('jscolor').jscolor.fromRGB(color.r, color.g, color.b);
+    document.getElementById('jsclr').jscolor.fromRGB(color.r, color.g, color.b);
 }
