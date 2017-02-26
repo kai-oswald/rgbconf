@@ -1,36 +1,39 @@
-$(document).ready(function() {
-
+$(document).ready(function () {
     var ip;
+    var partyMode;
 
-    $("#btnIp").click(function() {
+    function stopPartyMode() {
+        clearInterval(partyMode);
+    }
+    
+    $("#btnIp").click(function () {
         ip = $("#inputIp").val();
         init();
     });
 
-    $("#btnParty").click(function() {
-        setInterval(changeColor, 1000);
+    $("#btnParty").click(function () {
+        partyMode = setInterval(changeColor, 1000);
     });
 
-    $("#btnRnd").click(function() {
+    $("#btnRnd").click(function () {
         changeColor();
     });
 
-     $("#btnOff").click(function() {
+    $("#btnOff").click(function () {
+        stopPartyMode();
         $.ajax({
-            method: "GET",
-            url: "/none",
-            success: function() {
-            }
-
+            method: "POST",
+            url: "/color",
+            data: new Color(0, 0, 0),
+            success: function () {}
         });
     });
 
     function changeColor() {
-           $.ajax({
-            method: "GET",
+        $.ajax({
+            method: "POST",
             url: "/color",
-            success: function() {
-            }
+            success: function () {}
 
         });
     }
@@ -38,12 +41,32 @@ $(document).ready(function() {
     function init() {
         var red = new Color(255, 0, 0);
         changeColor(red);
-        
-    }    
+
+    }
 });
 
 function Color(r, g, b) {
     this.r = r;
     this.g = g;
     this.b = b;
+}
+
+function update(jscolor) {
+    var chosenColor = new Color(Math.round(jscolor.rgb[0]), Math.round(jscolor.rgb[1]), Math.round(jscolor.rgb[2]));   
+    changeColor(chosenColor);
+}
+
+function changeColor(color) {
+    $.ajax({
+        method: "POST",
+        url: "/color",
+        data: color,
+        success: function () {
+            console.log("s");
+        },
+        error: function(e) {
+            console.log(e);
+        },
+        dataType: "application/json"
+    });
 }
