@@ -22,12 +22,14 @@ function changeColor(color) {
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var rgb = require("./rgb");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
+    console.log(rgb);
     res.render("index.html")
 });
 
