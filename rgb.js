@@ -24,7 +24,7 @@ exports.getRandomColor = function () {
     var r = Math.round(Math.random() * 255);
     var g = Math.round(Math.random() * 255);
     var b = Math.round(Math.random() * 255);
-    return new Color(r, g, b);
+    return new exports.Color(r, g, b);
 }
 
 function setLight(pin, brightness) {
