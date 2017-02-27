@@ -9,6 +9,12 @@ simple Web-Interface for configuring RGB LEDs with Node.js on Raspberry Pi
 ## Usage
 ```javascript
 var rgb = require("./rgb");
-// set color to red
-rgb.setColor(255, 0, 0);
+// to set a color you can either use this
+rgb.setRGB(255, 0, 0);
+// or this
+var red = new rgb.Color(255, 0, 0);
+rgb.setColor(red);
+
+// get a random color
+var rndColor = rgb.getRandomColor();
 ```
