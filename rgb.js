@@ -4,10 +4,27 @@ const RED_PIN = 17;
 const GREEN_PIN = 22;
 const BLUE_PIN = 24;
 
-exports.setColor = function(r, g, b) {
+exports.setColor = function(color) {
+    exports.setRGB(color.r, color.g, color.b);
+}
+
+exports.setRGB = function (r, g, b) {
     setLight(RED_PIN, r);
     setLight(GREEN_PIN, g);
     setLight(BLUE_PIN, b);
+}
+
+exports.Color = function (r, g, b) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
+}
+
+exports.getRandomColor = function () {
+    var r = Math.round(Math.random() * 255);
+    var g = Math.round(Math.random() * 255);
+    var b = Math.round(Math.random() * 255);
+    return new Color(r, g, b);
 }
 
 function setLight(pin, brightness) {
