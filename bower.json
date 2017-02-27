@@ -1,0 +1,23 @@
+{
+  "name": "rgbconf",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kai Oswald"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kai-oswald/rgbconf",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^5.0.0",
+    "jscolor.min": "https://raw.githubusercontent.com/EastDesire/jscolor/master/jscolor.min.js",
+    "storm": "https://stormcss.com/storm.css",
+    "jquery": "^3.1.1"
+  }
+}
