@@ -1,5 +1,7 @@
 # rgbconf
-simple Web-Interface for configuring RGB LEDs with Node.js on Raspberry Pi
+simple Web-Interface for configuring RGB LEDs with Node.js on Raspberry Pi.
+
+Set up an LED Strip controlled by the Raspberry Pi: http://dordnung.de/raspberrypi-ledstrip/
 ## Install
 - install [pi-blaster daemon](https://github.com/sarfata/pi-blaster)
 - clone this repo ```git clone https://github.com/kai-oswald/rgbconf```
